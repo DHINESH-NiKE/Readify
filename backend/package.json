@@ -1,0 +1,24 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "server.mjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start backend": "node App.js",
+    "run backend": "nodemon App.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.6",
+    "express-validator": "^7.3.2",
+    "joi": "^18.2.8",
+    "lodash": "^4.18.1",
+    "mongoose": "^9.9.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}

@@ -1,0 +1,30 @@
+Here's a list of all the URL Paths you can use with this backend and what each URL Path does.
+
+Products, Delivery Options
+
+> GET /api/products
+> GET /api/delivery-options
+
+Cart
+
+> GET /api/cart-items
+> POST /api/cart-items
+> PUT /api/cart-items/:productId
+> DELETE /api/cart-items/:productId
+
+Orders
+
+> GET /api/orders
+> POST /api/orders
+> GET /api/orders/:orderId
+
+Wishlsit
+
+> GET /api/wishlist
+> POST /api/wishlist
+> GET /api/wishlist/:productId
+
+Payment Summary, Reset
+
+> GET /api/payment-summary
+> POST /api/reset

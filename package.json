@@ -1,0 +1,26 @@
+{
+  "name": "readify",
+  "version": "1.0.0",
+  "description": "",
+  "main": "App.js",
+  "scripts": {
+    "start backend": "node backend/App.js",
+    "run backend": "nodemon backend/App.js"
+  },
+  "author": "Dhineshvaran",
+  "license": "ISC",
+  "dependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "express": "^5.2.1",
+    "express-validator": "^7.3.2",
+    "mongoose": "^9.9.5",
+    "nodemon": "^3.1.14",
+    "react": "^19.2.8",
+    "react-icons": "^5.7.0",
+    "react-router": "^7.18.3",
+    "tailwindcss": "^4.3.3"
+  },
+  "devDependencies": {
+    "vite": "^8.2.2"
+  }
+}
