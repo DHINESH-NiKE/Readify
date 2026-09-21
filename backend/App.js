@@ -4,19 +4,25 @@ import path from "path";
 import { fileURLToPath } from "url";
 import productsRouter from "./router/products.mjs";
 import cartRouter from "./router/cart.mjs";
+import registerRouter from "./router/users.mjs";
 import mongoose from "mongoose";
+import session from "express-session";
+import MongoStore from "connect-mongo";
 
-const URL =
+const DBURL =
   "mongodb+srv://dhinesh:2012428@readify.efo1rnz.mongodb.net/?appName=Readify";
 const PORT = 3000;
+const SESSION_SECRET = "nike11";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
+app.use(cors());
+app.use(express.json());
 
 async function Run() {
   try {
-    const client= await mongoose.connect(URL, { dbName: "Readify" });
+    const client = await mongoose.connect(DBURL, { dbName: "Readify" });
     console.log("connected DB");
     app.listen(PORT, () => {
       console.log("Server running on port 3000");
@@ -29,9 +35,31 @@ async function Run() {
 
 Run();
 
-app.use(cors());
+app.use(
+  session({
+    store: MongoStore.create({
+      mongoUrl: DBURL,
+      dbName: "Readify",
+      collectionName: "sessions",
+      ttl: 24 * 60 * 60,
+    }),
+    secret: SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      httpOnly: true,
+      secure: true,
+      sameSite: "lax",
+      maxAge: 24 * 60 * 60 * 1000,
+    },
+  }),
+);
 
-app.use(express.json());
+app.use((req, res, next) => {
+  console.log(req.method, req.url);
+  next();
+});
+app.use(registerRouter);
 app.use(productsRouter);
 app.use(cartRouter);
 

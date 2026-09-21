@@ -62,3 +62,15 @@ export const cartPatchSchema = joi.object({
     "any.required": "Quantity change is required",
   }),
 });
+
+export const usersRegisterSchema = joi.object({
+  firstname:joi.string().required(),
+  lastname:joi.string().required(),
+  email:joi.string().required(),
+  password:joi.string().required(),
+})
+
+export const usersLoginSchema = joi.object({
+  email:joi.string().required(),
+  password:joi.string().required(),
+})
