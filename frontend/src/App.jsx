@@ -8,8 +8,8 @@ function App() {
   const [products, setProducts] = useState([]);
   useEffect(() => {
     axios.get("/api/products").then((res) => {
-      console.log(res.data);
-      setProducts(res.data);
+        console.log(res.data);
+        setProducts(res.data);
     });
   }, []);
   return (

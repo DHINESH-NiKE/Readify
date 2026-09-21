@@ -35,9 +35,14 @@ const productSchema = mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    wishlist: {
+      type: Boolean,
+      default: false,
+    },
   },
   {
     timestamps: true,
+    collection: "Product",
   },
 );
 

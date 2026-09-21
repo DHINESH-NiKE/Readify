@@ -33,6 +33,9 @@ export const productSchema = joi.object({
   bestseller: joi.boolean().messages({
     "boolean.base": "Should be a boolean",
   }),
+  wishlist: joi.boolean().messages({
+    "boolean.base": "Should be a boolean",
+  }),
 });
 
 //export const productsSchemas = joi.array().items(productSchemas);
@@ -53,19 +56,6 @@ export const cartSchema = joi.object({
 });
 
 export const cartPatchSchema = joi.object({
-  cartid: joi
-    .string()
-    .length(24)
-    .pattern(/^[0-9a-fA-F]{24}$/)
-    .required()
-    .messages({
-      "string.base": "Cart ID should be a string",
-      "string.empty": "Cart ID should not be empty",
-      "string.length": "Invalid Cart ID",
-      "string.pattern.base": "Invalid Cart ID",
-      "any.required": "Cart ID is required",
-    }),
-
   quantitychange: joi.number().valid(-1, 1).required().messages({
     "number.base": "Quantity change should be a number",
     "any.only": "Quantity change must be either 1 or -1",
